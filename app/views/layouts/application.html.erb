@@ -10,6 +10,31 @@
   </head>
 
   <body>
-    <%= yield %>
+      <nav>
+          <div>
+              <ul>
+                  <li>
+                      <%= link_to "Main", pages_main_path  %>
+                  </li>
+                <li>
+                    <%= link_to "About", pages_about_url %>
+                </li>
+          </div>
+      </nav>
+      <% if notice %>
+      	  <%= notice %>
+	    <% end %>
+
+	    <% if alert %>
+      	  <%= alert %>
+	    <% end %>
+      <div>
+          <% if current_user %>
+          Hello <%= current_user.name %>
+          <% else %>
+              <%= link_to "Login", login_path %>
+          <% end %>
+      </div>
+      <%= yield %>
   </body>
 </html>
